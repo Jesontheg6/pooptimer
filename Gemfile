@@ -49,6 +49,29 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
+gem 'country_select' 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'bootstrap', '~> 4.0.0.beta2'
+
+gem 'simple_form'
+gem 'countries'
+gem 'omniauth-facebook'
+gem 'figaro'
+gem 'bcrypt'
+
+gem 'bootstrap-sass'
+
+gem 'carrierwave'
+
+gem 'filterrific'
+
+gem 'mini_magick'
+
+gem 'geocoder'
+
+gem 'gmaps4rails'
+
+
+

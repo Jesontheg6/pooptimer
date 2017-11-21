@@ -1,9 +1,10 @@
-class CreateSessions < ActiveRecord::Migration[5.1]
+class CreateUsers < ActiveRecord::Migration[5.1]
   def change
-    create_table :sessions do |t|
+    create_table :users do |t|
     	t.string :name 
     	t.string :birthday 
     	t.string :gender
+    	t.string :country
     	t.string :email
     	t.string :password
 

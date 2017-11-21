@@ -1,0 +1,49 @@
+
+<h1 align="center"> Welcome To Your Profile </h1>
+<br>
+<br>
+<div class="container">
+<p> Name: <%= current_user.name %>
+<p> Gender: <%= current_user.gender %>
+<p> Country: <%= current_user.country %>
+<p> Brithday: <%= current_user.birthday %>
+<p> Email: <%= current_user.email %>
+<br>
+<hr>
+
+<table class="table">
+	
+
+<tr>
+	  <th> Number</th>
+		<th> Photo</th>
+		<th> Time Taken</th>
+		<th> Location</th>
+		<th> Recorded At </th>
+		<th> Action </th>
+
+</tr>
+
+<% @timer.sort_by{ |a| a.time.to_i }.reverse.each_with_index do |timer, number| %>
+	<tr> 	
+		<td> <%= number + 1 %> </td>
+    <td> <p> photo </p> </td>
+    <td> <%= timer.time %>	</td>
+    <td> <p> location </p> </td>
+    <td> <%= timer.created_at.strftime("%B %d %Y, %l:%M%P") %> </td>
+    <td> <%= link_to "Cancel Record", timer_path, method: :delete , data: { confirm: 'Sure ah?'} %> </td>
+	</tr>		
+<%end %>
+
+</table>
+ </div>
+
+<style type="text/css">
+	
+.starter-template {
+
+    padding: 1rem 1rem;
+    text-align: center;
+
+</style>
+
