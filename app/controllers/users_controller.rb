@@ -5,9 +5,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @timer = Timer.all
+    if logged_in?
+    @timer = current_user.timers
+  else 
+    redirect_to "/login"
   end 
-
+end 
   def create
   	@user = User.new(user_params)
     if @user.save 

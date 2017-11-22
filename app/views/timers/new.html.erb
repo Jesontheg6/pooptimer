@@ -23,7 +23,7 @@
 <br>
 <%= form_for Timer.new do |f| %>
 <div class="form-group">
- <h4>What is the time taken to poop?</h4><%= f.text_field :time ,:class => "form-control"  %>
+ <h4>What is the time taken to poop?</h4><%= f.text_field :time ,:class => "form-control" ,:id=>"timex" %>
 </div>
 <br>
 
@@ -41,12 +41,10 @@
     </div>
     <br>
 <div class="form-group">
- <%= text_field :latitude, id: "lat" %>
-  <%= text_field :longitude, id: "lng" %>
+ <%= f.hidden_field :latitude, id: "lat" %>
+  <%= f.hidden_field :longitude, id: "lng" %>
 
 </div>
-
- <br>
 
 <%= f.submit 'Create a new record', :class => "btn btn-outline-success", :display => "inline", :float => "left" %>
 
@@ -66,7 +64,7 @@
           navigator.geolocation.getCurrentPosition(displayOnMap);
         }
       });
-function getlad(){
+function getlat(){
   return position.coords.latitude;
 }
 function getlng(){
@@ -81,15 +79,12 @@ function getlng(){
         });
         
         handler.map.centerOn(marker);
-    
-         document.getElementById("lat").innerHTML = handler.lat().toFixed(5);
-         document.getElementById("lng").innerHTML = marker.lng().toFixed(5);
+        $("#lat").val(position.coords.latitude);
+        $("#lng").val(position.coords.longitude);
         handler.fitMapToBounds();
       };
 
     // if (status == google.maps.GeocoderStatus.OK) {
-    // $("#lat").val(results[0].geometry.location.lat());
-    // $("#lng").val(results[1].geometry.location.lng());
     // $("#form").submit();
     //   }
  
@@ -160,7 +155,7 @@ margin: 10px;
 }
 
 .starter-template {
-    padding: 0rem 0rem;
+    padding: 1rem 1rem;
 
 </style>
 
@@ -179,17 +174,27 @@ margin: 10px;
 
   var Interval ;
 
-
-  buttonStart.onclick = function() {
+   buttonStart.onclick = function() {
     
      clearInterval(Interval);
      Interval = setInterval(startTimer, 10);
   }
   
-    buttonStop.onclick = function() {
-       clearInterval(Interval);
-  }
-  
+
+  //    buttonStop.onclick = function() {
+  //      clearInterval(Interval);
+
+  // }
+ 
+
+  buttonStop.onclick = function() {
+     clearInterval(Interval);
+     var time1=tens.toString();
+     var time2=seconds.toString();
+     var time3=time2+':'+time1;
+     document.getElementById('timex').value=time3;
+       }
+
 
   buttonReset.onclick = function() {
      clearInterval(Interval);
@@ -231,8 +236,6 @@ margin: 10px;
 }
 
 </script> 
-
-
 
 
 </div>

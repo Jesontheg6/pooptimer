@@ -1,13 +1,13 @@
 <div class="container">
 <h1 align="center">	Global Leaderboard </h1>
+<h5 align="center"> who poops the longest? </h5>
 <br>
 <br>
-<h4> Filter by country </h4>
+<h6> Filter by country </h6>
 <%= form_for_filterrific @filterrific do |f| %>
 <%= f.text_field(
       :with_country_name, 
-      placeholder: 'Input country'
-    ) %>	
+      placeholder: 'Input country', class: "form-control") %>	
 <% end %>
 <br>
 
@@ -31,7 +31,7 @@
 		<td> <%= number + 1 %> </td>
 		<td> <%= timer.user.gender %> </td>
 		<td> <%= timer.user.age %> </td>
-    <td> <%= timer.user.country %></td>
+    <td> <%= timer.user.country %> </td>
     <td> <%= link_to "view photo", photo_path(timer) %></td>
     <td> <%= timer.time %>	</td>
     <td> <p> location </p> </td>
@@ -50,3 +50,24 @@
 
 
 </div>
+
+<script type="text/javascript">
+	
+	Filterrific.submitFilterForm = function(){
+  var form = $(this).parents("form"),
+      url = form.attr("action");
+  // turn on spinner
+  $('.filterrific_spinner').show();
+  // Submit ajax request
+  $.ajax({
+    url: url,
+    data: form.serialize(),
+    type: 'GET',
+    dataType: 'script'
+  }).done(function( msg ) {
+    $('.filterrific_spinner').hide();
+  });
+};
+
+</script>
+

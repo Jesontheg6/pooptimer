@@ -15,3 +15,23 @@
 //= require underscore
 //= require gmaps/google
 //= require filterrific/filterrific-jquery
+//= require jquery3
+//= require jquery_ujs
+
+
+$(document).ready(function(){
+	$('.destroy').on('click', function(){
+		if(confirm("sure ah?")){
+			$.ajax({
+				url: '/timers/' + $(this).data('id'),
+				type: 'DELETE',
+				dataType: ''
+				success: function(r){
+	 $('#timer-' + r.id).remove()
+
+				}
+		  });
+		}
+	});
+});
+

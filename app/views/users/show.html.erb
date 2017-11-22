@@ -25,13 +25,13 @@
 </tr>
 
 <% @timer.sort_by{ |a| a.time.to_i }.reverse.each_with_index do |timer, number| %>
-	<tr> 	
+	<tr id="timer-<%= timer.id %>"> 	
 		<td> <%= number + 1 %> </td>
     <td> <p> photo </p> </td>
     <td> <%= timer.time %>	</td>
     <td> <p> location </p> </td>
     <td> <%= timer.created_at.strftime("%B %d %Y, %l:%M%P") %> </td>
-    <td> <%= link_to "Cancel Record", timer_path, method: :delete , data: { confirm: 'Sure ah?'} %> </td>
+    <td data-id='<%= timer.id %>' class="destroy"> Delete Record </td>
 	</tr>		
 <%end %>
 

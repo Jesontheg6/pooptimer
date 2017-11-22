@@ -73,5 +73,7 @@ gem 'geocoder'
 
 gem 'gmaps4rails'
 
+gem 'jquery-rails'
+
 
 

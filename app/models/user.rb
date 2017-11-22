@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
 has_secure_password 
 
-has_many :timers
+has_many :timers, dependent: :destroy
 
     def self.options_for_sorted_by
     	 [
@@ -18,21 +18,21 @@ has_many :timers
  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
 
 
-# validates :name , :presence 		=> true,
-# 					:length							=> { :maximum => 50}
+#   validates :name , :presence 		=> true,
+#  	  				:length							=> { :maximum => 50}
 
-# validates :email, :presence 	=> true,
-# 					:format 						=> { :with => email_regex},
-# 				  :uniqueness 				=> { :case_sensitive => false}
+# # validates :email, :presence 	=> true,
+# # 					:format 						=> { :with => email_regex},
+# # 				  :uniqueness 				=> { :case_sensitive => false}
 
-# validates :password,:presence => true,
+#    validates :password,:presence => true,
 # 					:length 						=> { :within => 6..40}
 
-validates :gender , :presence  	=> true
+# validates :gender , :presence  	=> true
 
-validates :country , :presence  	=> true
+# validates :country , :presence  	=> true
 
-validates :birthday ,:presence  	=> true
+# validates :birthday ,:presence  	=> true
 
 GENDER_TYPES = ["Male", "Female", "Others"] 
 
@@ -42,33 +42,21 @@ GENDER_TYPES = ["Male", "Female", "Others"]
 		(Date.today - date).to_i / 365
 	end
 
-
-#before_save :encrypt_password
-
-# require 'bcrypt'
-
-# class User < ActiveRecord::Base
-#   # users.password_hash in the database is a :string
-#   include BCrypt
-
-#   def password
-#     @password ||= Password.new(password_hash)
-#   end
-
-#   def password=(new_password)
-#     @password = Password.create(new_password)
-#     self.password_hash = @password
-#   end
-# end
-
     has_many :authentications, dependent: :destroy
 
     def self.create_with_auth_and_hash(authentication, auth_hash)
-      
+     byebug
       user = self.create!(
-        name: auth_hash["name"],
+        name: auth_hash["extra"]["raw_info"]["name"],
         email: auth_hash["extra"]["raw_info"]["email"],
-        gender: auth_hash ["extra"]["raw_info"]["gender"],
+        gender: auth_hash["extra"]["raw_info"]["gender"],
+        birthday: auth_hash["extra"]["raw_info"]["birthday"],
+        country: auth_hash["extra"]["raw_info"]["homwtown"],
+      #   @player = Player.new
+    		# @player = Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y')
+   			# 	@player.save
+
+
         # user.profile.city = auth.info.location.split(",")[0]
         
         password: SecureRandom.hex(5)

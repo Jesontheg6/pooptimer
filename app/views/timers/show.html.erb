@@ -1,0 +1,17 @@
+  
+  <div class="container" align="center">
+
+  	<% if !@photo.nil? %>
+
+<p> User has no photo <p>
+
+<% else %>
+
+  <% @timer.photos.each do |o| %>
+
+  <img src= "<%=o%>" />
+
+<%end%>
+<%end%>
+</div>
+   

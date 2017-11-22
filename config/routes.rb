@@ -6,13 +6,13 @@ root "timers#leaderboard"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 	get "/timers/leaderboard" => "timers#leaderboard", as: "leaderboard"
 
-	get "/timers/:id" => "timers#photo", as: :photo
-
  resources :users
  resources :sessions
  resources :timers
 
+ get "/about" => "users#about" 
 
+	get "/timers/:id" => "timers#photo", as: :photo
 
 get "/login" => "sessions#new" , as: :login
 
@@ -22,6 +22,8 @@ get "/users/new" => "users#new" , as: :sign_up
 post "/login" => "sessions#create"
 
  delete "/sign_out" => "sessions#destroy", as: "sign_out"
+
+
 
 
 

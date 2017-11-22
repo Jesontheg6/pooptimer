@@ -9,24 +9,16 @@ class SessionsController < ApplicationController
     user = User.where(email: params[:session][:email].downcase).first
     if user && user.authenticate(params[:session][:password])
        sign_in user
-      render :template => "/users/show"
+      redirect_to "/users/show"
     else
       flash[:error] = 'Invalid email/password combination'
-      render :template => "/users/new"
-
+      redirect_to "/users/new"
     end 
-  end 
+    end 
 
-#    @user_login = User.find_by(email: params[:email])
-#   if !@user_login.nil? && @user_login.authenticate(params[:password])
-#     session[:user_id]= @user_login.id
-#     flash[:danger] = "already logged in"x
-#     flash[:notice] = "Please Sign up"
-#     redirect '/users/new'
-#   end
-# end
 
-def show
+  def show
+
   end 
 
 
@@ -46,13 +38,13 @@ def show
       if authentication.user
         user = authentication.user
         authentication.update_token(auth_hash)
-        @next = profile_path
+        @next = "/users/show"
         @notice = "Signed in!"
       # else: user logs in with OAuth for the first time
       else
         user = User.create_with_auth_and_hash(authentication, auth_hash)
         # you are expected to have a path that leads to a page for editing user details
-        @next = edit_user_path(user)
+        @next = "/users/show"
         @notice = "User created. Please confirm or edit details"
       end
 
