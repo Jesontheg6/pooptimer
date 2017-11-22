@@ -10,20 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121162832) do
+ActiveRecord::Schema.define(version: 20171121080225) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authentications", force: :cascade do |t|
     t.string "uid"
     t.string "token"
     t.string "provider"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
-# Could not dump table "timers" because of following StandardError
-#   Unknown type 'json' for column 'photos'
+  create_table "timers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "time"
+    t.json "photos"
+    t.float "longitude", default: 0.0
+    t.float "latitude", default: 0.0
+    t.string "venue"
+    t.index ["user_id"], name: "index_timers_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -36,7 +48,8 @@ ActiveRecord::Schema.define(version: 20171121162832) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "password_confirmation"
-    t.integer "timer_id"
   end
 
+  add_foreign_key "authentications", "users"
+  add_foreign_key "timers", "users"
 end

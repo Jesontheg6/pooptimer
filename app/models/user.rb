@@ -45,7 +45,6 @@ GENDER_TYPES = ["Male", "Female", "Others"]
     has_many :authentications, dependent: :destroy
 
     def self.create_with_auth_and_hash(authentication, auth_hash)
-     byebug
       user = self.create!(
         name: auth_hash["extra"]["raw_info"]["name"],
         email: auth_hash["extra"]["raw_info"]["email"],

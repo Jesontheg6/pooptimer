@@ -4,6 +4,8 @@ class Timer < ApplicationRecord
 	 mount_uploaders :photos, PhotosUploader
 	 serialize :photos, JSON
 	 belongs_to :user
+	 validates :time ,presence: true
+	 validates :photos, presence: true
 
 	 filterrific(
     available_filters: [
