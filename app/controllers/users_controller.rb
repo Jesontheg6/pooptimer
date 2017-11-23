@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     redirect_to "/login"
   end 
 end 
+
   def create
   	@user = User.new(user_params)
     if @user.save 
@@ -28,4 +29,9 @@ end
     params.require(:user).permit(:name, :birthday, :email, :country, :gender, :password)
   end
 
+  def user_photo 
+
+  @timer = Timers.find(params[:id])
+
+  end 
 end

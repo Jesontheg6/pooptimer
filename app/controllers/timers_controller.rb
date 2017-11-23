@@ -56,5 +56,12 @@ def show
 	  params.require(:timer).permit(:time ,:longitude, :latitude, {photos: []})
 	end 
 
+
+  def user_photo 
+    
+  @timer = Timer.find(params[:id])
+
+  end 
+
 end 
 

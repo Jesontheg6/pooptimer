@@ -25,9 +25,9 @@ $(document).ready(function(){
 			$.ajax({
 				url: '/timers/' + $(this).data('id'),
 				type: 'DELETE',
-				dataType: ''
+				dataType: 'json',
 				success: function(r){
-	 $('#timer-' + r.id).remove()
+	 $('#timer-'+ r.id).remove()
 
 				}
 		  });

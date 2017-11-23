@@ -38,7 +38,7 @@ GENDER_TYPES = ["Male", "Female", "Others"]
 
 
 	def age
-		date = Date.strptime(self.birthday,'%Y-%m-%d')
+	date = Date.strptime(self.birthday,'%Y-%m-%d')
 		(Date.today - date).to_i / 365
 	end
 
