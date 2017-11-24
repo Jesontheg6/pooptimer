@@ -60,7 +60,7 @@ gem 'shoulda-matchers', '~> 3.1'
 end
  
 
-gem 'bootstrap', '~> 4.0.0.beta2'
+# gem 'bootstrap', '~> 4.0.0.beta2'
 
 gem 'simple_form'
 gem 'countries'
