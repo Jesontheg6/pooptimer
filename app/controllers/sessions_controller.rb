@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
     flash[:notice] = "You've logged out"
     redirect_to "/login"
 
-  end 
+ end 
 
    def create_from_omniauth
       auth_hash = request.env["omniauth.auth"]

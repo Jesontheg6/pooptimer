@@ -14,9 +14,10 @@
 //= require_tree .
 //= require underscore
 //= require gmaps/google
-//= require filterrific/filterrific-jquery
 //= require jquery3
 //= require jquery_ujs
+//= require filterrific/filterrific-jquery
+
 
 
 $(document).ready(function(){
