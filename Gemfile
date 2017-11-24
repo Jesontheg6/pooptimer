@@ -82,7 +82,7 @@ gem 'gmaps4rails'
 
 gem 'jquery-rails'
 
-gem 'fog'
+gem 'fog-aws'
 
 group :production do
     # Heroku
