@@ -27,10 +27,10 @@
 <% @timer.sort_by{ |a| a.time.to_i }.reverse.each_with_index do |timer, number| %>
     <tr id="timer-<%=timer.id %>"> 	
   		<td> <%= number + 1 %> </td>
-     <td> <%= link_to "view photo", profile_photo_path(timer) %></td>
+      <td> <%= link_to "view photo", profile_photo_path(timer) %> </td>
       <td> <%= timer.time %>	</td>
-      <td> <p> location </p> </td>
-      <td> <%= timer.created_at.strftime("%B %d %Y, %l:%M%P") %> </td>
+      <td>  <%= link_to "view location", user_location_path(timer) %> </td>
+      <td> <%= timer.created_at.strftime("%B %d %Y, %l:%M%P") %> 
      <td data-id='<%= timer.id %>' class="destroy"> Delete Record </td>
   	</tr>		
   <%end %>

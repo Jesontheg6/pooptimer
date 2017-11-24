@@ -12,7 +12,6 @@ gem 'rails', '~> 5.1.4'
 gem 'pg'
 # gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -83,5 +82,11 @@ gem 'gmaps4rails'
 
 gem 'jquery-rails'
 
+group :production do
+    # Heroku
+    # ==================
+    gem 'rails_12factor' # Heroku Gem Supports
+    gem 'puma' # Using puma for
+end
 
 

@@ -34,7 +34,7 @@
     <td> <%= timer.user.country %> </td>
     <td> <%= link_to "view photo", photo_path(timer) %></td>
     <td> <%= timer.time %>	</td>
-    <td> <p> location </p> </td>
+    <td> <%= link_to "view location", show_location_path(timer) %></td>
     <td> <%= timer.created_at.strftime("%B %d %Y, %l:%M%P") %> </td>
 
 <%#end %>

@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
       if authentication.user
         user = authentication.user
         authentication.update_token(auth_hash)
-        @next = "/users/show"
+        @next = "/users/#{user.id}/edit"
         @notice = "Signed in!"
       # else: user logs in with OAuth for the first time
       else

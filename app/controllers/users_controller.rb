@@ -22,16 +22,25 @@ end
     end
   end
 
+   
+  def edit
+    @user = User.find(params[:id])
+  end 
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(birthday: user_params[:birthday], country: user_params[:country])
+      redirect_to "/users/show"
+    else 
+      flash[:danger] = 'Error submtting info'
+      render :edit
+    end
+  end
+
 
   private
 
   def user_params
     params.require(:user).permit(:name, :birthday, :email, :country, :gender, :password)
   end
-
-  def user_photo 
-
-  @timer = Timers.find(params[:id])
-
-  end 
 end

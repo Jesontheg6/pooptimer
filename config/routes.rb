@@ -8,11 +8,19 @@ root "timers#leaderboard"
 
 
 
+
  resources :users
 
  get "/users/timers/:id" => "timers#user_photo", as: :profile_photo
 
+ get "/users/:id/location"  => "timers#user_location", as: :user_location
+
+  get "/users/:id/edit" => "users#edit"
+
  resources :sessions
+
+ get "/timers/:id/location" => "timers#show_location", as: :show_location
+
  resources :timers
 
  get "/about" => "users#about" 

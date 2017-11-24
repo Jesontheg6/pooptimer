@@ -63,5 +63,15 @@ def show
 
   end 
 
+  def show_location 
+  		@timer = Timer.find(params[:id])
+  end 
+
+  def user_location
+
+  	@timer = Timer.find(params[:id])
+
+  end 
+
 end 
 
