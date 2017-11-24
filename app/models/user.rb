@@ -6,11 +6,11 @@ has_secure_password
 
 has_many :timers, dependent: :destroy
 
-include BCrypt
+# include BCrypt
 
-  def password
-    @password ||= Password.new(password_hash)
-  end
+#   def password
+#     @password ||= Password.new(password_hash)
+#   end
 
   # def password=(new_password)
   #   @password = Password.create(new_password)
