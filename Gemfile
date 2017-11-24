@@ -82,6 +82,8 @@ gem 'gmaps4rails'
 
 gem 'jquery-rails'
 
+gem 'fog'
+
 group :production do
     # Heroku
     # ==================
