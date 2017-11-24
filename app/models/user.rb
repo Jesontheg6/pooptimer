@@ -1,8 +1,23 @@
+require 'bcrypt'
+
 class User < ApplicationRecord
 
 has_secure_password 
 
 has_many :timers, dependent: :destroy
+
+include BCrypt
+
+  def password
+    @password ||= Password.new(password_hash)
+  end
+
+  # def password=(new_password)
+  #   @password = Password.create(new_password)
+  #   self.password_hash = @password
+  # end
+
+
 
     def self.options_for_sorted_by
     	 [
@@ -35,6 +50,7 @@ has_many :timers, dependent: :destroy
 # validates :birthday ,:presence  	=> true
 
 GENDER_TYPES = ["Male", "Female", "Others"] 
+
 
 
 	def age
